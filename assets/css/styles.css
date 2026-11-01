@@ -1,0 +1,86 @@
+/* ---------- colors & fonts ----------
+   main = deep teal, second = saffron, background = soft neutral
+   (changed the dark values at the bottom for the theme switch) */
+:root{
+  --main:#0f5c63;
+  --main-dark:#0a3f45;
+  --second:#f0a202;
+  --accent:#e4572e;
+  --bg:#f5f7f6;
+  --card:#ffffff;
+  --text:#1d2b2d;
+  --muted:#667477;
+}
+[data-bs-theme="dark"]{
+  --main:#2aa3ae;
+  --main-dark:#0d2a2e;
+  --bg:#10191b;
+  --card:#182427;
+  --text:#e6eeee;
+  --muted:#9fb0b2;
+}
+body{font-family:"Cairo","Tajawal",sans-serif;background:var(--bg);color:var(--text);line-height:1.8}
+h1,h2,h3,h4,h5{font-weight:700}
+section{padding:3rem 0}
+.section-title{font-size:1.7rem;margin-bottom:1.5rem;padding-inline-start:.8rem;border-inline-start:6px solid var(--second)}
+
+/* ---------- header ---------- */
+.site-header{background:var(--main-dark);position:sticky;top:0;z-index:1030}
+.site-header .navbar-brand{color:#fff;font-weight:700;display:flex;align-items:center;gap:.6rem}
+.site-header .navbar-brand img{height:44px;width:auto}
+.site-header .nav-link{color:#d5e6e7;padding:.5rem 1rem}
+.site-header .nav-link:hover,.site-header .nav-link.active{color:var(--second)}
+.theme-btn{border:1px solid #ffffff55;color:#fff;background:transparent}
+.theme-btn:hover{background:#ffffff22;color:#fff}
+
+/* ---------- buttons / badges ---------- */
+.btn-primary{--bs-btn-bg:var(--main);--bs-btn-border-color:var(--main);--bs-btn-hover-bg:var(--main-dark);--bs-btn-hover-border-color:var(--main-dark);--bs-btn-active-bg:var(--main-dark)}
+.btn-accent{background:var(--second);color:#2b1d00;font-weight:700;border:0}
+.btn-accent:hover{background:#d98f00;color:#2b1d00}
+.cat-badge{font-size:1rem;padding:.55rem 1.1rem;border-radius:50rem;color:#fff;text-decoration:none;transition:transform .2s}
+.cat-badge:hover{transform:translateY(-3px);color:#fff}
+.cat-tech{background:#0f5c63}.cat-sport{background:#e4572e}.cat-culture{background:#7b3fa0}
+.cat-science{background:#2a6fdb}.cat-expo{background:#c98300}
+
+/* ---------- images (empty until you add the real ones) ---------- */
+.img-box{position:relative;background:linear-gradient(135deg,var(--main),var(--second));aspect-ratio:16/10;overflow:hidden}
+.img-box img{width:100%;height:100%;object-fit:cover;display:block}
+.img-box img.img-missing{visibility:hidden}
+.img-box .badge{position:absolute;top:.7rem;inset-inline-start:.7rem}
+.img-box .today-badge{inset-inline-start:auto;inset-inline-end:.7rem;background:var(--accent)!important}
+
+/* ---------- slider ---------- */
+.hero-slide{height:460px;position:relative;background:linear-gradient(135deg,var(--main-dark),var(--main))}
+.hero-slide img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;opacity:.55}
+.hero-slide img.img-missing{visibility:hidden}
+.hero-caption{position:absolute;inset-inline:0;bottom:0;padding:2.5rem 1rem 3rem;background:linear-gradient(transparent,#000000b3);color:#fff}
+.hero-caption h2{font-size:2.1rem}
+.carousel-control-prev,.carousel-control-next{width:8%}
+
+/* ---------- cards ---------- */
+.event-card{background:var(--card);border:1px solid #00000014;border-radius:.9rem;overflow:hidden;transition:box-shadow .2s}
+.event-card:hover{box-shadow:0 8px 22px #0000001f}
+[data-bs-theme="dark"] .event-card{border-color:#ffffff14}
+.event-card .meta{color:var(--muted);font-size:.9rem}
+.filter-bar{background:var(--card);border-radius:.9rem;padding:1.2rem;box-shadow:0 2px 8px #0000000f}
+.info-box,.person,.policy{background:var(--card);border-radius:.9rem;padding:1.3rem;height:100%}
+.person .avatar{width:110px;height:110px;border-radius:50%;margin:0 auto .8rem;aspect-ratio:1}
+.page-banner{background:var(--main-dark);color:#fff;padding:2.5rem 0}
+.map-box{aspect-ratio:16/7;border-radius:.9rem}
+.gallery .img-box{border-radius:.7rem}
+
+/* ---------- footer ---------- */
+.site-footer{background:var(--main-dark);color:#c8dcde;padding:2.5rem 0 1rem;margin-top:2rem}
+.site-footer a{color:#c8dcde;text-decoration:none}
+.site-footer a:hover{color:var(--second)}
+.info-box .social a{color:var(--main)}
+.social a{font-size:1.4rem;margin-inline-end:.8rem}
+
+/* ---------- scroll to top ---------- */
+#toTop{position:fixed;bottom:1.5rem;inset-inline-start:1.5rem;width:48px;height:48px;border-radius:50%;border:0;background:var(--second);color:#2b1d00;font-size:1.4rem;display:none;z-index:1040;box-shadow:0 4px 12px #0003}
+#toTop.show{display:block}
+
+@media (max-width:768px){
+  .hero-slide{height:340px}
+  .hero-caption h2{font-size:1.4rem}
+}

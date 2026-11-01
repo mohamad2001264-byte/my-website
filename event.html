@@ -1,0 +1,118 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl" data-bs-theme="light">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>تفاصيل الفعالية</title>
+<!-- bootstrap (rtl version) + icons from cdn -->
+<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.rtl.min.css" rel="stylesheet">
+<link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Cairo:wght@400;600;700&display=swap" rel="stylesheet">
+<link href="assets/css/styles.css" rel="stylesheet">
+</head>
+<body data-page="event">
+<header class="site-header">
+  <nav class="navbar navbar-expand-lg navbar-dark">
+    <div class="container">
+      <a class="navbar-brand" href="index.html"><img src="assets/img/logo.png" alt="logo" onerror="this.style.visibility='hidden'">دليل فعاليات الجامعة</a>
+      <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#nav"><span class="navbar-toggler-icon"></span></button>
+      <div class="collapse navbar-collapse" id="nav">
+        <ul class="navbar-nav ms-auto me-lg-0 mb-2 mb-lg-0">
+          <li class="nav-item"><a class="nav-link" href="index.html">الرئيسية</a></li>
+          <li class="nav-item"><a class="nav-link" href="events.html">الفعاليات</a></li>
+          <li class="nav-item"><a class="nav-link active" href="event.html">تفاصيل الفعالية</a></li>
+          <li class="nav-item"><a class="nav-link" href="about.html">عن الدليل</a></li>
+          <li class="nav-item"><a class="nav-link" href="contact.html">اتصل بنا</a></li>
+        </ul>
+        <button id="themeBtn" class="btn theme-btn" type="button" title="تغيير الثيم"></button>
+      </div>
+    </div>
+  </nav>
+</header>
+
+<main>
+  <!-- section 1: title and main info -->
+  <section>
+    <div class="container">
+      <div class="row g-4">
+        <div class="col-lg-7">
+          <span id="evCat" class="badge mb-2"></span>
+          <h1 id="evTitle"></h1>
+          <p class="mb-1"><i class="bi bi-calendar-event"></i> <span id="evDate"></span></p>
+          <p><i class="bi bi-geo-alt"></i> <span id="evPlace"></span></p>
+          <div class="d-flex flex-wrap gap-2 mb-3">
+            <button id="calBtn" class="btn btn-primary" type="button"><i class="bi bi-calendar-plus"></i> أضف للتقويم</button>
+            <button id="shareBtn" class="btn btn-outline-primary" type="button"><i class="bi bi-share"></i> شارك</button>
+            <button class="btn btn-accent" type="button" data-bs-toggle="modal" data-bs-target="#bookModal">احجز مقعدًا</button>
+          </div>
+          <!-- put the event picture here (loaded by js from the img folder) -->
+          <div class="img-box rounded-3"><img id="evImg" alt="صورة الفعالية" onerror="this.classList.add('img-missing')"></div>
+        </div>
+        <div class="col-lg-5">
+          <h4>موقع الفعالية</h4>
+          <!-- static map picture, add it as assets/img/map.jpg -->
+          <div class="img-box map-box"><img src="assets/img/map.jpg" alt="خريطة" onerror="this.classList.add('img-missing')"></div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- section 2: full description + small gallery -->
+  <section>
+    <div class="container">
+      <h2 class="section-title">عن الفعالية</h2>
+      <p id="evDesc" class="fs-5"></p>
+      <div class="row g-3 gallery mt-2">
+        <!-- gallery pictures: gallery1.jpg, gallery2.jpg, gallery3.jpg -->
+        <div class="col-4"><div class="img-box"><img id="g1" alt="صورة 1" onerror="this.classList.add('img-missing')"></div></div>
+        <div class="col-4"><div class="img-box"><img id="g2" alt="صورة 2" onerror="this.classList.add('img-missing')"></div></div>
+        <div class="col-4"><div class="img-box"><img id="g3" alt="صورة 3" onerror="this.classList.add('img-missing')"></div></div>
+      </div>
+    </div>
+  </section>
+
+  <!-- section 3: related events -->
+  <section>
+    <div class="container">
+      <h2 class="section-title">فعاليات ذات صلة</h2>
+      <div class="row g-4" id="related"></div>
+    </div>
+  </section>
+</main>
+
+<!-- fake booking modal -->
+<div class="modal fade" id="bookModal" tabindex="-1" aria-hidden="true">
+  <div class="modal-dialog modal-dialog-centered"><div class="modal-content">
+    <form id="bookForm" novalidate>
+      <div class="modal-header"><h5 class="modal-title">حجز مقعد: <span id="modalTitle"></span></h5><button type="button" class="btn-close" data-bs-dismiss="modal"></button></div>
+      <div class="modal-body">
+        <label class="form-label" for="bookName">الاسم الكامل</label>
+        <input id="bookName" class="form-control mb-3">
+        <div id="bookMsg"></div>
+      </div>
+      <div class="modal-footer"><button class="btn btn-primary" type="submit">تأكيد الحجز</button></div>
+    </form>
+  </div></div>
+</div>
+<footer class="site-footer">
+  <div class="container">
+    <div class="row g-4">
+      <div class="col-md-5"><h5 class="text-white">دليل فعاليات الجامعة الافتراضية</h5><p>مكان واحد يجمع كل ورش الجامعة وندواتها ومسابقاتها.</p></div>
+      <div class="col-md-4"><h5 class="text-white">تواصل معنا</h5>
+        <p class="mb-1"><i class="bi bi-envelope"></i> info@svuonline.org</p>
+        <p><i class="bi bi-telephone"></i> +963957532996</p></div>
+      <div class="col-md-3 social"><h5 class="text-white">تابعنا</h5>
+        <a href="https://www.facebook.com/svuonline.org" target="_blank" rel="noopener" aria-label="facebook"><i class="bi bi-facebook"></i></a>
+        <a href="https://www.instagram.com/syrian_virtual_university" target="_blank" rel="noopener" aria-label="instagram"><i class="bi bi-instagram"></i></a>
+        <a href="https://www.youtube.com/channel/UCJwPgp0tOp1ZqkzbmDvFSaw" target="_blank" rel="noopener" aria-label="youtube"><i class="bi bi-youtube"></i></a>
+        <a href="https://sy.linkedin.com/school/syrianvirtualuniversity/" target="_blank" rel="noopener" aria-label="linkedin"><i class="bi bi-linkedin"></i></a></div>
+    </div>
+    <hr class="border-secondary">
+    <p class="text-center small mb-0">جميع الحقوق محفوظة &copy; 2026 - دليل فعاليات الجامعة الافتراضية</p>
+  </div>
+</footer>
+<button id="toTop" type="button" aria-label="للأعلى"><i class="bi bi-arrow-up"></i></button>
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+<script src="assets/js/main.js"></script>
+</body>
+</html>
